@@ -2,6 +2,7 @@ var express = require('express'),
     multer = require('multer'),
     app = express();
 var upload = multer({ dest: "uploads/" });
+var port = process.env.PORT || 8000;
 
 // Default home page
 app.get('/', function(req, res) {
@@ -19,7 +20,7 @@ app.post('/get-file-size', upload.single('file'), function(req, res){
     });
 });
 
-var server = app.listen(8000, function() {
+var server = app.listen(port, function() {
     var port = server.address().port;
     console.log('Express server listening on port %s.', port);
 });
